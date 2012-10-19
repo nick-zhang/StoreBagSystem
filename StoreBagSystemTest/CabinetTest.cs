@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using StoreBagSystem;
 
 namespace StoreBagSystemTest
 {
@@ -12,30 +12,6 @@ namespace StoreBagSystemTest
         {
             var cabinet = new Cabinet(0);
             cabinet.Store(new Bag());
-        }
-    }
-
-    public class Bag
-    {
-    }
-
-    public class CabinetException : ApplicationException
-    {
-        public CabinetException(string noBoxAvailable) : base(noBoxAvailable)
-        {
-            
-        }
-    }
-
-    public class Cabinet
-    {
-        public Cabinet(int i)
-        {
-        }
-
-        public void Store(Bag bag)
-        {
-            throw new CabinetException("No Box Available");
         }
     }
 }
