@@ -21,5 +21,15 @@ namespace StoreBagSystemTest
             var ticket =cabinet.Store(new Bag());
             Assert.IsNotNull(ticket);
         }
+
+        [TestMethod]
+        public void ShouldGetBagSuccessfullyGivenUnusedTicked()
+        {
+            var cabinet = new Cabinet(1);
+            var bag = new Bag();
+            var ticket = cabinet.Store(bag);
+            var actualBag = cabinet.Get(ticket);
+            Assert.AreEqual(bag, actualBag);
+        }
     }
 }
