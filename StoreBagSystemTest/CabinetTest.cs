@@ -7,11 +7,19 @@ namespace StoreBagSystemTest
     public class CabinetTest
     {
         [TestMethod]
-        [ExpectedException(typeof(CabinetException), "There is excpetion for storing a bag.")]
+        [ExpectedException(typeof(CabinetException), "Excpetion occures for storing a bag.")]
         public void ShouldShowErrorMessageWhenNoBoxAvailable()
         {
             var cabinet = new Cabinet(0);
             cabinet.Store(new Bag());
+        }
+
+        [TestMethod]
+        public void ShouldStoreBagSuccessfullyWhenThereIsBoxAvailable()
+        {
+            var cabinet = new Cabinet(1);
+            var ticket =cabinet.Store(new Bag());
+            Assert.IsNotNull(ticket);
         }
     }
 }
