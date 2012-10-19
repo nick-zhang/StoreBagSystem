@@ -31,5 +31,18 @@ namespace StoreBagSystemTest
             var actualBag = cabinet.Get(ticket);
             Assert.AreEqual(bag, actualBag);
         }
+
+        [TestMethod]
+        public void ShouldNotGetBagGivenUsedTicked()
+        {
+            var cabinet = new Cabinet(1);
+            var bag = new Bag();
+            var ticket = cabinet.Store(bag);
+            var actualBag = cabinet.Get(ticket);
+            Assert.AreEqual(bag, actualBag);
+
+            var secondBag = cabinet.Get(ticket);
+            Assert.IsNull(secondBag);
+        }
     }
 }

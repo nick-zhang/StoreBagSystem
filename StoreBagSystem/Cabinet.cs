@@ -26,7 +26,17 @@ namespace StoreBagSystem
 
         public Bag Get(Ticket ticket)
         {
-            return tickBagMap[ticket];
+            if (HasNoSuchTick(ticket))
+                return null;
+
+            var bag = tickBagMap[ticket];
+            tickBagMap.Remove(ticket);
+            return bag;
+        }
+
+        private bool HasNoSuchTick(Ticket ticket)
+        {
+            return !tickBagMap.ContainsKey(ticket);
         }
     }
 }
