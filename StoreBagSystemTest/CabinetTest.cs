@@ -29,7 +29,7 @@ namespace StoreBagSystemTest
             var bag = new Bag();
             var ticket = cabinet.Store(bag);
             var actualBag = cabinet.Get(ticket);
-            Assert.AreEqual(bag, actualBag);
+            Assert.AreSame(bag, actualBag);
         }
 
         [TestMethod]
