@@ -28,7 +28,7 @@ namespace StoreBagSystemTest
             var cabinet = new Cabinet(1);
             var bag = new Bag();
             var ticket = cabinet.Store(bag);
-            var actualBag = cabinet.Get(ticket);
+            var actualBag = cabinet.Pick(ticket);
             Assert.AreSame(bag, actualBag);
         }
 
@@ -38,10 +38,10 @@ namespace StoreBagSystemTest
             var cabinet = new Cabinet(1);
             var bag = new Bag();
             var ticket = cabinet.Store(bag);
-            var actualBag = cabinet.Get(ticket);
+            var actualBag = cabinet.Pick(ticket);
             Assert.AreEqual(bag, actualBag);
 
-            var secondBag = cabinet.Get(ticket);
+            var secondBag = cabinet.Pick(ticket);
             Assert.IsNull(secondBag);
         }
     }

@@ -24,7 +24,7 @@ namespace StoreBagSystem
             return  ticket;
         }
 
-        public Bag Get(Ticket ticket)
+        public Bag Pick(Ticket ticket)
         {
             if (HasNoSuchTick(ticket))
                 return null;
