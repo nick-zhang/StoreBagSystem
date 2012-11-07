@@ -31,6 +31,22 @@ namespace StoreBagSystemTest
             var ticket = robot.Store(new Bag());
 
             Assert.IsNotNull(ticket);
+            Assert.IsFalse(cabinet1.HasAvailableBox());
+        }
+
+        [TestMethod]
+        public void ShouldStoreBagInTheSecondAvailableCabinetIfFirstIsFull()
+        {
+            var cabinet1 = new Cabinet(1);
+            cabinet1.Store(new Bag());
+            var cabinet2 = new Cabinet(1);
+            var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
+
+            var robot = new Robot(cabinets);
+            var ticket = robot.Store(new Bag());
+
+            Assert.IsNotNull(ticket);
+            Assert.IsFalse(cabinet2.HasAvailableBox());
         }
     }
 }
