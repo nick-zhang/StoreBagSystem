@@ -1,4 +1,4 @@
-namespace StoreBagSystemTest
+namespace StoreBagSystem
 {
     public class Bag
     {
