@@ -8,7 +8,7 @@ namespace StoreBagSystemTest
     public class RobotTest
     {
         [TestMethod]
-        [ExpectedException(typeof(CabinetException), "No available box exception!")]
+        [ExpectedException(typeof (CabinetException), "No available box exception!")]
         public void ShouldShowErrorMessageWhenNoBoxAvailableInAnyCabinet()
         {
             var cabinet = new Cabinet(1);
@@ -16,20 +16,21 @@ namespace StoreBagSystemTest
             cabinet.Store(new Bag());
 
             var robot = new Robot(cabinets);
-            
+
             robot.Store(new Bag());
         }
-    }
 
-    public class Robot
-    {
-        public Robot(IList<Cabinet> cabinets)
+        [TestMethod]
+        public void ShouldStoreBagSuccessfullyInFirstAvailableBox()
         {
-        }
+            var cabinet1 = new Cabinet(1);
+            var cabinet2 = new Cabinet(1);
+            var cabinets = new List<Cabinet> {cabinet1, cabinet2};
 
-        public void Store(Bag bag)
-        {
-            throw new CabinetException("No Box Available.");
+            var robot = new Robot(cabinets);
+            var ticket = robot.Store(new Bag());
+
+            Assert.IsNotNull(ticket);
         }
     }
 }
