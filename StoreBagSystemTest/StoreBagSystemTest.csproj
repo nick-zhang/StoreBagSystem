@@ -49,6 +49,7 @@
     <Compile Include="CabinetTest.cs" />
     <Compile Include="RobotTest.cs" />
     <Compile Include="SmartRobotTest.cs" />
+    <Compile Include="SuperRobotTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StoreBagSystem\StoreBagSystem.csproj">

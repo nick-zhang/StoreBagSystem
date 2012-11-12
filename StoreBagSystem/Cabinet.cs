@@ -42,5 +42,10 @@ namespace StoreBagSystem
         {
             return capacity - tickBagMap.Count;
         }
+
+        public double VacancyRate()
+        {
+            return (double)(AvailableBoxes()) / capacity;
+        }
     }
 }

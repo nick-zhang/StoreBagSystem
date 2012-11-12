@@ -14,6 +14,15 @@ namespace StoreBagSystemTest
         }
 
         [TestMethod]
+        public void ShouldReturnCabinetVacancyReate()
+        {
+            var cabinet = new Cabinet(2);
+            cabinet.Store(new Bag());
+
+            Assert.AreEqual(0.5, cabinet.VacancyRate(), 0.001);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(CabinetException), "Excpetion occures for storing a bag.")]
         public void ShouldShowErrorMessageWhenNoBoxAvailableToStoreBag()
         {
