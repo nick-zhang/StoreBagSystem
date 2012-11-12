@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace StoreBagSystem
 {
-    public class Cabinet
+    public class Cabinet :IStoreable
     {
         private readonly int capacity;
         private readonly Dictionary<Ticket, Bag> tickBagMap;

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace StoreBagSystem
 {
-    public class Robot
+    public class Robot : IStoreable
     {
         private readonly IList<Cabinet> cabinets;
 
