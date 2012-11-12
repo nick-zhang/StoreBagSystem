@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StoreBagSystem;
 
@@ -47,6 +48,22 @@ namespace StoreBagSystemTest
 
             Assert.IsNotNull(ticket);
             Assert.AreEqual(0, cabinet2.AvailableBoxes());
+        }
+
+        [TestMethod]
+        public void ShouldPickBagSuccessfullyByRobot()
+        {
+            var cabinet1 = new Cabinet(1);
+            cabinet1.Store(new Bag());
+            var cabinet2 = new Cabinet(1);
+            var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
+
+            var robot = new Robot(cabinets);
+            var bag = new Bag();
+            var ticket = robot.Store(bag);
+
+            var pickedBag = robot.Pick(ticket);
+            Assert.AreSame(bag, pickedBag);
         }
     }
 }

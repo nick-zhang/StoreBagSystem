@@ -22,5 +22,10 @@ namespace StoreBagSystem
 
             return availabeCabinet.Store(bag);
         }
+
+        public Bag Pick(Ticket ticket)
+        {
+            return cabinets.Select(cabinet => cabinet.Pick(ticket)).FirstOrDefault(bag => bag != null);
+        }
     }
 }
