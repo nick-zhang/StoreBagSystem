@@ -19,5 +19,18 @@ namespace StoreBagSystemTest
             Assert.AreEqual(1, cabinet1.AvailableBoxes());
             Assert.AreEqual(1, cabinet2.AvailableBoxes());
         }
+
+        [TestMethod]
+        public void ShouldStoreBagIntoTheFirstCabinetWhenMoreThanTwoCabinetsHaveTheSameAvailableBoxes()
+        {
+            var cabinet1 = new Cabinet(1);
+            var cabinet2 = new Cabinet(1);
+            var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
+
+            var smartRobot = new SmartRobot(cabinets);
+            smartRobot.Store(new Bag());
+            Assert.AreEqual(0, cabinet1.AvailableBoxes());
+            Assert.AreEqual(1, cabinet2.AvailableBoxes());
+        }
     }
 }

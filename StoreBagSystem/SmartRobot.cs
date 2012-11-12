@@ -14,7 +14,7 @@ namespace StoreBagSystem
 
         public Ticket Store(Bag bag)
         {
-            var cabinetWithMostAvailableBoxes = cabinets.OrderBy(cabinet => cabinet.AvailableBoxes()).Last();
+            var cabinetWithMostAvailableBoxes = cabinets.OrderByDescending(cabinet => cabinet.AvailableBoxes()).First();
             return cabinetWithMostAvailableBoxes.Store(bag);
         }
     }
