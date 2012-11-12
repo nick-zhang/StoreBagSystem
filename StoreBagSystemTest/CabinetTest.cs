@@ -14,6 +14,13 @@ namespace StoreBagSystemTest
         }
 
         [TestMethod]
+        public void ShouldReturnAvailableBoxNumber()
+        {
+            var cabinet = new Cabinet(1);
+            Assert.AreEqual(1, cabinet.AvailableBoxes());
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(CabinetException), "Excpetion occures for storing a bag.")]
         public void ShouldShowErrorMessageWhenNoBoxAvailableToStoreBag()
         {

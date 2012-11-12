@@ -42,5 +42,10 @@ namespace StoreBagSystem
         {
             return tickBagMap.Count < capacity;
         }
+
+        public int AvailableBoxes()
+        {
+            return capacity - tickBagMap.Count;
+        }
     }
 }
