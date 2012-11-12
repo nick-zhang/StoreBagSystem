@@ -25,5 +25,19 @@ namespace StoreBagSystemTest
             Assert.AreEqual(0, cabinet1.AvailableBoxes());
             Assert.AreEqual(2, cabinet2.AvailableBoxes());
         }
+
+        [TestMethod]
+        public void ShouldPickBagSuccessfullyBySuperRobot()
+        {
+            var cabinet1 = new Cabinet(1);
+            var cabinet2 = new Cabinet(2);
+            var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
+            var superRobot = new SuperRobot(cabinets);
+            var bag = new Bag();
+            var ticket = superRobot.Store(bag);
+
+            var pickedBag = superRobot.Pick(ticket);
+            Assert.AreSame(bag, pickedBag);
+        }
     }
 }

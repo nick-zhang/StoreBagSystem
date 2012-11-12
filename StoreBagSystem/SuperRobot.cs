@@ -17,5 +17,10 @@ namespace StoreBagSystem
             var highestVacancyRateCainet = cabinets.OrderByDescending(cabinet => cabinet.VacancyRate()).First();
             return highestVacancyRateCainet.Store(bag);
         }
+
+        public Bag Pick(Ticket ticket)
+        {
+            return cabinets.Select(cabinet => cabinet.Pick(ticket)).FirstOrDefault(bag => bag != null);
+        }
     }
 }
