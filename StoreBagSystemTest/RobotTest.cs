@@ -31,7 +31,7 @@ namespace StoreBagSystemTest
             var ticket = robot.Store(new Bag());
 
             Assert.IsNotNull(ticket);
-            Assert.IsFalse(cabinet1.HasAvailableBox());
+            Assert.AreEqual(0, cabinet1.AvailableBoxes());
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace StoreBagSystemTest
             var ticket = robot.Store(new Bag());
 
             Assert.IsNotNull(ticket);
-            Assert.IsFalse(cabinet2.HasAvailableBox());
+            Assert.AreEqual(0, cabinet2.AvailableBoxes());
         }
     }
 }

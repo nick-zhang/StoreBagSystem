@@ -7,13 +7,6 @@ namespace StoreBagSystemTest
     public class CabinetTest
     {
         [TestMethod]
-        public void ShouldReturnTrueWhenHasAvailableBox()
-        {
-            var cabinet = new Cabinet(1);
-            Assert.IsTrue(cabinet.HasAvailableBox());
-        }
-
-        [TestMethod]
         public void ShouldReturnAvailableBoxNumber()
         {
             var cabinet = new Cabinet(1);

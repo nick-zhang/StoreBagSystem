@@ -14,7 +14,7 @@ namespace StoreBagSystem
 
         public Ticket Store(Bag bag)
         {
-            var availabeCabinet = cabinets.FirstOrDefault(cabinet => cabinet.HasAvailableBox());
+            var availabeCabinet = cabinets.FirstOrDefault(cabinet => cabinet.AvailableBoxes() > 0);
             if (availabeCabinet == null)
             {
                 throw new CabinetException("No available box.");

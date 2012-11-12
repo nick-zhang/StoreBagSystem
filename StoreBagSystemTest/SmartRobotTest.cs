@@ -15,7 +15,7 @@ namespace StoreBagSystemTest
             var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
 
             var smartRobot = new SmartRobot(cabinets);
-            Assert.IsTrue(cabinet1.HasAvailableBox());
+            Assert.AreEqual(1, cabinet2.AvailableBoxes());
         }
     }
 

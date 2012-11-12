@@ -38,11 +38,6 @@ namespace StoreBagSystem
             return !tickBagMap.ContainsKey(ticket);
         }
 
-        public bool HasAvailableBox()
-        {
-            return tickBagMap.Count < capacity;
-        }
-
         public int AvailableBoxes()
         {
             return capacity - tickBagMap.Count;
