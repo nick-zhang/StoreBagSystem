@@ -6,7 +6,7 @@ namespace StoreBagSystemTest
     public class RobotManagerTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Should()
         {
 
         }

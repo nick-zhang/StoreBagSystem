@@ -3,24 +3,17 @@ using System.Linq;
 
 namespace StoreBagSystem
 {
-    public class SuperRobot : IStoreable
+    public class SuperRobot : AbstractRobot
     {
-        private readonly IList<Cabinet> cabinets;
-
         public SuperRobot(IList<Cabinet> cabinets)
         {
-            this.cabinets = cabinets;
+            this.Cabinets = cabinets;
         }
 
-        public Ticket Store(Bag bag)
+        public override Ticket Store(Bag bag)
         {
-            var highestVacancyRateCainet = cabinets.OrderByDescending(cabinet => cabinet.VacancyRate()).First();
+            var highestVacancyRateCainet = Cabinets.OrderByDescending(cabinet => cabinet.VacancyRate()).First();
             return highestVacancyRateCainet.Store(bag);
-        }
-
-        public Bag Pick(Ticket ticket)
-        {
-            return cabinets.Select(cabinet => cabinet.Pick(ticket)).FirstOrDefault(bag => bag != null);
         }
     }
 }

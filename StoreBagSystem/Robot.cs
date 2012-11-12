@@ -3,29 +3,22 @@ using System.Linq;
 
 namespace StoreBagSystem
 {
-    public class Robot : IStoreable
+    public class Robot : AbstractRobot
     {
-        private readonly IList<Cabinet> cabinets;
-
         public Robot(IList<Cabinet> cabinets)
         {
-            this.cabinets = cabinets;
+            Cabinets = cabinets;
         }
 
-        public Ticket Store(Bag bag)
+        public override Ticket Store(Bag bag)
         {
-            var availabeCabinet = cabinets.FirstOrDefault(cabinet => cabinet.AvailableBoxes() > 0);
+            var availabeCabinet = Cabinets.FirstOrDefault(cabinet => cabinet.AvailableBoxes() > 0);
             if (availabeCabinet == null)
             {
                 throw new CabinetException("No available box.");
             }
 
             return availabeCabinet.Store(bag);
-        }
-
-        public Bag Pick(Ticket ticket)
-        {
-            return cabinets.Select(cabinet => cabinet.Pick(ticket)).FirstOrDefault(bag => bag != null);
         }
     }
 }

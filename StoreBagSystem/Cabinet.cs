@@ -33,11 +33,6 @@ namespace StoreBagSystem
             return bag;
         }
 
-        private bool HasNoSuchTick(Ticket ticket)
-        {
-            return !tickBagMap.ContainsKey(ticket);
-        }
-
         public int AvailableBoxes()
         {
             return capacity - tickBagMap.Count;
@@ -46,6 +41,11 @@ namespace StoreBagSystem
         public double VacancyRate()
         {
             return (double)(AvailableBoxes()) / capacity;
+        }
+
+        private bool HasNoSuchTick(Ticket ticket)
+        {
+            return !tickBagMap.ContainsKey(ticket);
         }
     }
 }
