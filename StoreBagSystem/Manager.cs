@@ -1,19 +1,21 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StoreBagSystem
 {
     public class Manager
     {
-        private readonly IStoreable storeable;
+        private readonly IList<IStoreable> storeables;
 
-        public Manager(IStoreable storeable)
+        public Manager(IList<IStoreable> storeables)
         {
-            this.storeable = storeable;
+            this.storeables = storeables;
         }
 
         public Ticket Store(Bag bag)
         {
-            return storeable.Store(bag);  
+            var firstOrDefault = storeables.FirstOrDefault(s => s.CanStore());
+            return firstOrDefault.Store(bag);  
         }
     }
 }
