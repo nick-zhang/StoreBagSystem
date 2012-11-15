@@ -5,9 +5,8 @@ namespace StoreBagSystem
 {
     public class Robot : AbstractRobot
     {
-        public Robot(IList<Cabinet> cabinets)
+        public Robot(IList<Cabinet> cabinets) : base(cabinets)
         {
-            Cabinets = cabinets;
         }
 
         public override Ticket Store(Bag bag)

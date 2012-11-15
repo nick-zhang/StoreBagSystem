@@ -7,6 +7,11 @@ namespace StoreBagSystem
     {
         protected IList<Cabinet> Cabinets;
 
+        protected AbstractRobot(IList<Cabinet> cabinets)
+        {
+            Cabinets = cabinets;
+        }
+
         public abstract Ticket Store(Bag bag);
 
         public Bag Pick(Ticket ticket)
