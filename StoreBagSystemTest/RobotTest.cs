@@ -8,6 +8,17 @@ namespace StoreBagSystemTest
     public class RobotTest
     {
         [TestMethod]
+        public void ShouldTellWhetherCanStoreBox()
+        {
+            var cabinet = new Cabinet(1);
+            var cabinets = new List<Cabinet> { cabinet };
+            var robot = new Robot(cabinets);
+
+            var canStore = robot.CanStore();
+            Assert.IsTrue(canStore);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof (CabinetException), "No available box exception!")]
         public void ShouldShowErrorMessageWhenNoBoxAvailableInAnyCabinet()
         {

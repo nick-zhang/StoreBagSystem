@@ -14,6 +14,14 @@ namespace StoreBagSystemTest
         }
 
         [TestMethod]
+        public void ShouldTellWhetherCanStoreBag()
+        {
+            var cabinet = new Cabinet(1);
+            var canStore = cabinet.CanStore();
+            Assert.IsTrue(canStore);
+        }
+
+        [TestMethod]
         public void ShouldReturnCabinetVacancyReate()
         {
             var cabinet = new Cabinet(2);

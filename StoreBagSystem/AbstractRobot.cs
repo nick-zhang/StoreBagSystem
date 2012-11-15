@@ -5,7 +5,7 @@ namespace StoreBagSystem
 {
     public abstract class AbstractRobot : IStoreable
     {
-        protected IList<Cabinet> Cabinets;
+        protected readonly IList<Cabinet> Cabinets;
 
         protected AbstractRobot(IList<Cabinet> cabinets)
         {
@@ -17,6 +17,11 @@ namespace StoreBagSystem
         public Bag Pick(Ticket ticket)
         {
             return Cabinets.Select(cabinet => cabinet.Pick(ticket)).FirstOrDefault(bag => bag != null);
+        }
+
+        public bool CanStore()
+        {
+            return Cabinets.Any(cabinet => cabinet.CanStore());
         }
     }
 }

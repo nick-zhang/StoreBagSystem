@@ -43,6 +43,11 @@ namespace StoreBagSystem
             return (double)(AvailableBoxes()) / capacity;
         }
 
+        public bool CanStore()
+        {
+            return AvailableBoxes() > 0;
+        }
+
         private bool HasNoSuchTick(Ticket ticket)
         {
             return !tickBagMap.ContainsKey(ticket);

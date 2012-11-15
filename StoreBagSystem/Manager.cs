@@ -11,11 +11,6 @@ namespace StoreBagSystem
             this.storeable = storeable;
         }
 
-        public Manager(IList<IStoreable> storeables)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public Ticket Store(Bag bag)
         {
             return storeable.Store(bag);  
