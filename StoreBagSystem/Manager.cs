@@ -1,17 +1,24 @@
+using System.Collections.Generic;
+
 namespace StoreBagSystem
 {
     public class Manager
     {
-        private readonly Cabinet cabinet;
+        private readonly IStoreable storeable;
 
-        public Manager(Cabinet cabinet)
+        public Manager(IStoreable storeable)
         {
-            this.cabinet = cabinet;
+            this.storeable = storeable;
+        }
+
+        public Manager(IList<IStoreable> storeables)
+        {
+            throw new System.NotImplementedException();
         }
 
         public Ticket Store(Bag bag)
         {
-            return cabinet.Store(bag);
+            return storeable.Store(bag);  
         }
     }
 }
