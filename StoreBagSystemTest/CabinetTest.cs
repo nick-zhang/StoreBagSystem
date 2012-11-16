@@ -68,5 +68,17 @@ namespace StoreBagSystemTest
             var secondBag = cabinet.Pick(ticket);
             Assert.IsNull(secondBag);
         }
+
+        [TestMethod]
+        public void ShouldListAllTheStoredBags()
+        {
+            var cabinet = new Cabinet(2);
+            var bag = new Bag();
+            cabinet.Store(bag);
+
+            var  bags = cabinet.StoredBags();
+            Assert.AreEqual(1, bags.Count);
+            Assert.IsTrue(bags.Contains(bag));
+        }
     }
 }

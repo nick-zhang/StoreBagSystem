@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StoreBagSystem
 {
@@ -46,6 +47,11 @@ namespace StoreBagSystem
         public bool CanStore()
         {
             return AvailableBoxes() > 0;
+        }
+
+        public IList<Bag> StoredBags()
+        {
+            return tickBagMap.Select(p=>p.Value).ToList();
         }
 
         private bool HasNoSuchTick(Ticket ticket)
