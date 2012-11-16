@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace StoreBagSystem
 {
-    public class Manager
+    public class Manager : IStoreable
     {
         private readonly IList<IStoreable> storeables;
 
@@ -14,13 +14,21 @@ namespace StoreBagSystem
 
         public Ticket Store(Bag bag)
         {
-            var firstOrDefault = storeables.FirstOrDefault(s => s.CanStore());
-            return firstOrDefault.Store(bag);  
+            var firstCanStore = storeables.FirstOrDefault(s => s.CanStore());
+            if (firstCanStore ==null)
+                throw  new CabinetException("No Box Available.");
+                
+            return firstCanStore.Store(bag);  
         }
 
         public Bag Pick(Ticket ticket)
         {
             return storeables.Select(s => s.Pick(ticket)).FirstOrDefault(b => b != null);
+        }
+
+        public bool CanStore()
+        {
+            return storeables.Any(s => s.CanStore());
         }
     }
 }

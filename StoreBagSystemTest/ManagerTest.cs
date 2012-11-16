@@ -12,15 +12,14 @@ namespace StoreBagSystemTest
         {
             var cabinet = new Cabinet(10);
             var manager = new Manager(new List<IStoreable>{cabinet});
-
             var storedBag = new Bag();
+
             var ticket = manager.Store(storedBag);
 
             Assert.AreEqual(9, cabinet.AvailableBoxes());
 
             var pickedBag = manager.Pick(ticket);
             Assert.AreSame(storedBag, pickedBag);
-
         }
 
         [TestMethod]
@@ -54,6 +53,22 @@ namespace StoreBagSystemTest
             manager.Store(new Bag());
            
             Assert.AreEqual(9, cabinet1.AvailableBoxes());
+        }
+
+        [TestMethod]
+        public void ShouldManagerManageOtherMangers()
+        {
+            var cabinet1 = new Cabinet(2);
+            var manager1 = new Manager(new List<IStoreable> {cabinet1});
+
+            var manager = new Manager(new List<IStoreable> {manager1});
+
+            var storedBag = new Bag();
+            var ticket = manager.Store(storedBag);
+            Assert.AreEqual(1, cabinet1.AvailableBoxes());
+
+            var pickedBag = manager.Pick(ticket);
+            Assert.AreSame(storedBag, pickedBag);
         }
     }
 }
