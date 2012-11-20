@@ -11,15 +11,9 @@ namespace StoreBagSystem
         {
         }
 
-        public override Ticket Store(Bag bag)
+        protected override Cabinet GetAvailableCabinet()
         {
-            var availabeCabinet = Cabinets.FirstOrDefault(cabinet => cabinet.AvailableBoxes() > 0);
-            if (availabeCabinet == null)
-            {
-                throw new CabinetException("No available box.");
-            }
-
-            return availabeCabinet.Store(bag);
+            return Cabinets.FirstOrDefault(cabinet => cabinet.AvailableBoxes() > 0) ?? Cabinets.First();
         }
 
         public string AvailableBoxesMessage()

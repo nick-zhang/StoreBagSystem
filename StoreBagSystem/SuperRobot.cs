@@ -9,10 +9,9 @@ namespace StoreBagSystem
         {
         }
 
-        public override Ticket Store(Bag bag)
+        protected override Cabinet GetAvailableCabinet()
         {
-            var highestVacancyRateCainet = Cabinets.OrderByDescending(cabinet => cabinet.VacancyRate()).First();
-            return highestVacancyRateCainet.Store(bag);
+            return Cabinets.OrderByDescending(cabinet => cabinet.VacancyRate()).First();
         }
     }
 }

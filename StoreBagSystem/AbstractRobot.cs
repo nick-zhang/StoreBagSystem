@@ -12,7 +12,11 @@ namespace StoreBagSystem
             Cabinets = cabinets;
         }
 
-        public abstract Ticket Store(Bag bag);
+        public virtual Ticket Store(Bag bag)
+        {
+            var availableBox = GetAvailableCabinet();
+            return availableBox.Store(bag);
+        }
 
         public Bag Pick(Ticket ticket)
         {
@@ -23,5 +27,7 @@ namespace StoreBagSystem
         {
             return Cabinets.Any(cabinet => cabinet.CanStore());
         }
+
+        protected abstract Cabinet GetAvailableCabinet();
     }
 }
