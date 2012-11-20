@@ -56,5 +56,24 @@ namespace StoreBagSystemTest
             var pickedBag = smartRobot.Pick(ticket);
             Assert.AreSame(bag, pickedBag);
         }
+
+        [TestMethod]
+        public void ShouldGetFormattedAvailbeBoxesMessagesForAllCabinets()
+        {
+            var cabinet1 = new Cabinet(1);
+            cabinet1.Store(new Bag());
+            var cabinet2 = new Cabinet(1);
+            var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
+
+            var robot = new SmartRobot(cabinets);
+            robot.Store(new Bag());
+
+            var message = robot.AvailableBoxesMessage();
+            Assert.AreEqual(message, string.Format("SmartRobot{0}\n  Cabinet{1}:{2}\n  Cabinet{3}:{4}\n",
+                                                   robot.GetHashCode(),
+                                                   cabinet1.GetHashCode(), cabinet1.AvailableBoxes(),
+                                                   cabinet2.GetHashCode(), cabinet2.AvailableBoxes()
+                                         ));
+        }
     }
 }

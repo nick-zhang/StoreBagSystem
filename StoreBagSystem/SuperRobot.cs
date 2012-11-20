@@ -13,5 +13,10 @@ namespace StoreBagSystem
         {
             return Cabinets.OrderByDescending(cabinet => cabinet.VacancyRate()).First();
         }
+
+        protected override string Name()
+        {
+            return string.Format("SuperRobot{0}\n", GetHashCode());
+        }
     }
 }
