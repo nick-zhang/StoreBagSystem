@@ -5,7 +5,7 @@ namespace StoreBagSystem
 {
     public abstract class AbstractRobot : IStoreable
     {
-        protected const string INDENT_STRING = "  ";
+        private const string IndentString = "  ";
         protected readonly IList<Cabinet> Cabinets;
 
         protected AbstractRobot(IList<Cabinet> cabinets)
@@ -31,7 +31,7 @@ namespace StoreBagSystem
 
         public string AvailableBoxesMessage()
         {
-            return Cabinets.Aggregate(Name(), (current, cabinet) => string.Concat(current, INDENT_STRING + cabinet.AvailableBoxesMessage()));
+            return Cabinets.Aggregate(Name(), (current, cabinet) => string.Concat(current, IndentString + cabinet.AvailableBoxesMessage()));
         }
 
         protected abstract Cabinet GetAvailableCabinet();
