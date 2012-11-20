@@ -70,15 +70,14 @@ namespace StoreBagSystemTest
         }
 
         [TestMethod]
-        public void ShouldListAllTheStoredBags()
+        public void ShouldGetFormattedMessageOfAvaialbeBoxes()
         {
             var cabinet = new Cabinet(2);
             var bag = new Bag();
             cabinet.Store(bag);
 
-            var  bags = cabinet.StoredBags();
-            Assert.AreEqual(1, bags.Count);
-            Assert.IsTrue(bags.Contains(bag));
+            var  message = cabinet.AvailableBoxesMessage();
+            Assert.AreEqual(message, string.Format("Cabinet{0}:{1}", cabinet.GetHashCode(), cabinet.AvailableBoxes()));
         }
     }
 }

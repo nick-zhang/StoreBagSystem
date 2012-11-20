@@ -26,7 +26,7 @@ namespace StoreBagSystem
 
         public Bag Pick(Ticket ticket)
         {
-            if (HasNoSuchTick(ticket))
+            if (NoSuchTick(ticket))
                 return null;
 
             var bag = tickBagMap[ticket];
@@ -54,9 +54,14 @@ namespace StoreBagSystem
             return tickBagMap.Select(p=>p.Value).ToList();
         }
 
-        private bool HasNoSuchTick(Ticket ticket)
+        private bool NoSuchTick(Ticket ticket)
         {
             return !tickBagMap.ContainsKey(ticket);
+        }
+
+        public string AvailableBoxesMessage()
+        {
+            return string.Format("Cabinet{0}:{1}", GetHashCode(), AvailableBoxes());
         }
     }
 }

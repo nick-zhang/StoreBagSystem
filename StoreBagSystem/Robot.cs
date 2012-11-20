@@ -19,5 +19,10 @@ namespace StoreBagSystem
 
             return availabeCabinet.Store(bag);
         }
+
+        public IList<Bag> StoredBags()
+        {
+            return  Cabinets.SelectMany(cabinet => cabinet.StoredBags()).ToList();
+        }
     }
 }

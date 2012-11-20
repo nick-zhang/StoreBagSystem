@@ -75,5 +75,20 @@ namespace StoreBagSystemTest
             var pickedBag = robot.Pick(ticket);
             Assert.AreSame(bag, pickedBag);
         }
+
+        [TestMethod]
+        public void ShouldListAllBagsStored()
+        {
+            var cabinet1 = new Cabinet(1);
+            cabinet1.Store(new Bag());
+            var cabinet2 = new Cabinet(1);
+            var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
+            
+            var robot = new Robot(cabinets);
+            robot.Store(new Bag());
+
+            var storedBags = robot.StoredBags();
+            Assert.AreEqual(2, storedBags.Count);
+        }
     }
 }
