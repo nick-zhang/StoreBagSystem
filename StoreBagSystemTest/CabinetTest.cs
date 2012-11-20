@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StoreBagSystem;
 
 namespace StoreBagSystemTest
@@ -77,7 +78,8 @@ namespace StoreBagSystemTest
             cabinet.Store(bag);
 
             var  message = cabinet.AvailableBoxesMessage();
-            Assert.AreEqual(message, string.Format("Cabinet{0}:{1}", cabinet.GetHashCode(), cabinet.AvailableBoxes()));
+            Assert.AreEqual(message, string.Format("Cabinet{0}:{1}\n", cabinet.GetHashCode(), cabinet.AvailableBoxes()));
+            Console.Out.WriteLine(message);
         }
     }
 }

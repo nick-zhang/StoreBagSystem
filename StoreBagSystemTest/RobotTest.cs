@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StoreBagSystem;
 
@@ -11,7 +12,7 @@ namespace StoreBagSystemTest
         public void ShouldTellWhetherCanStoreBox()
         {
             var cabinet = new Cabinet(1);
-            var cabinets = new List<Cabinet> { cabinet };
+            var cabinets = new List<Cabinet> {cabinet};
             var robot = new Robot(cabinets);
 
             var canStore = robot.CanStore();
@@ -51,7 +52,7 @@ namespace StoreBagSystemTest
             var cabinet1 = new Cabinet(1);
             cabinet1.Store(new Bag());
             var cabinet2 = new Cabinet(1);
-            var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
+            var cabinets = new List<Cabinet> {cabinet1, cabinet2};
 
             var robot = new Robot(cabinets);
             var ticket = robot.Store(new Bag());
@@ -66,7 +67,7 @@ namespace StoreBagSystemTest
             var cabinet1 = new Cabinet(1);
             cabinet1.Store(new Bag());
             var cabinet2 = new Cabinet(1);
-            var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
+            var cabinets = new List<Cabinet> {cabinet1, cabinet2};
 
             var robot = new Robot(cabinets);
             var bag = new Bag();
@@ -77,18 +78,22 @@ namespace StoreBagSystemTest
         }
 
         [TestMethod]
-        public void ShouldListAllBagsStored()
+        public void ShouldGetFormattedAvailbeBoxesMessagesForAllCabinets()
         {
             var cabinet1 = new Cabinet(1);
             cabinet1.Store(new Bag());
             var cabinet2 = new Cabinet(1);
-            var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
-            
+            var cabinets = new List<Cabinet> {cabinet1, cabinet2};
+
             var robot = new Robot(cabinets);
             robot.Store(new Bag());
 
-            var storedBags = robot.StoredBags();
-            Assert.AreEqual(2, storedBags.Count);
+            var message = robot.AvailableBoxesMessage();
+            Assert.AreEqual(message, string.Format("Robot{0}\n  Cabinet{1}:{2}\n  Cabinet{3}:{4}\n",
+                                                   robot.GetHashCode(),
+                                                   cabinet1.GetHashCode(), cabinet1.AvailableBoxes(),
+                                                   cabinet2.GetHashCode(), cabinet2.AvailableBoxes()
+                                         ));
         }
     }
 }

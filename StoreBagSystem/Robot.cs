@@ -5,6 +5,8 @@ namespace StoreBagSystem
 {
     public class Robot : AbstractRobot
     {
+        private const string IndentString = "  ";
+
         public Robot(IList<Cabinet> cabinets) : base(cabinets)
         {
         }
@@ -20,9 +22,11 @@ namespace StoreBagSystem
             return availabeCabinet.Store(bag);
         }
 
-        public IList<Bag> StoredBags()
+        public string AvailableBoxesMessage()
         {
-            return  Cabinets.SelectMany(cabinet => cabinet.StoredBags()).ToList();
+            var message = string.Format("Robot{0}\n", GetHashCode());
+
+            return Cabinets.Aggregate(message, (current, cabinet) => string.Concat(current, IndentString + cabinet.AvailableBoxesMessage()));
         }
     }
 }

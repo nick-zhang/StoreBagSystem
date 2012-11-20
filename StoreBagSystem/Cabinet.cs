@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 
 namespace StoreBagSystem
 {
@@ -49,11 +48,6 @@ namespace StoreBagSystem
             return AvailableBoxes() > 0;
         }
 
-        public IList<Bag> StoredBags()
-        {
-            return tickBagMap.Select(p=>p.Value).ToList();
-        }
-
         private bool NoSuchTick(Ticket ticket)
         {
             return !tickBagMap.ContainsKey(ticket);
@@ -61,7 +55,7 @@ namespace StoreBagSystem
 
         public string AvailableBoxesMessage()
         {
-            return string.Format("Cabinet{0}:{1}", GetHashCode(), AvailableBoxes());
+            return string.Format("Cabinet{0}:{1}\n", GetHashCode(), AvailableBoxes());
         }
     }
 }
