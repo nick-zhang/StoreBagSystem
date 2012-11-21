@@ -46,7 +46,7 @@ namespace StoreBagSystemTest
 
             var cabinet2 = new Cabinet(5);
             var cabinets2 = new List<Cabinet> {cabinet2};
-            var smartRobot = new SmartRobot(cabinets2, new MostAvailableSelector(cabinets2));
+            var smartRobot = new AbstractRobot(cabinets2, new MostAvailableSelector(cabinets2));
 
             var cabinet3 = new Cabinet(4);
             var cabinets3 = new List<Cabinet> {cabinet3};
