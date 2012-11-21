@@ -50,7 +50,7 @@ namespace StoreBagSystemTest
 
             var cabinet3 = new Cabinet(4);
             var cabinets3 = new List<Cabinet> {cabinet3};
-            var superRobot = new SuperRobot(cabinets3, new HighestVacancyRateSelector(cabinets3));
+            var superRobot = new AbstractRobot(cabinets3, new HighestVacancyRateSelector(cabinets3));
 
             var manager = new Manager(new List<IStoreable> {robot, smartRobot, superRobot});
 

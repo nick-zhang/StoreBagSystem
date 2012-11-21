@@ -55,7 +55,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SequentialSelector.cs" />
-    <Compile Include="SuperRobot.cs" />
     <Compile Include="Ticket.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

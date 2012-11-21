@@ -19,7 +19,7 @@ namespace StoreBagSystemTest
             cabinet2.Store(new Bag());
 
             var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
-            var superRobot = new SuperRobot(cabinets, new HighestVacancyRateSelector(cabinets));
+            var superRobot = new AbstractRobot(cabinets, new HighestVacancyRateSelector(cabinets));
             superRobot.Store(new Bag());
 
             Assert.AreEqual(0, cabinet1.AvailableBoxes());
@@ -32,7 +32,7 @@ namespace StoreBagSystemTest
             var cabinet1 = new Cabinet(1);
             var cabinet2 = new Cabinet(2);
             var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
-            var superRobot = new SuperRobot(cabinets, new HighestVacancyRateSelector(cabinets));
+            var superRobot = new AbstractRobot(cabinets, new HighestVacancyRateSelector(cabinets));
             var bag = new Bag();
             var ticket = superRobot.Store(bag);
 
@@ -48,7 +48,7 @@ namespace StoreBagSystemTest
             var cabinet2 = new Cabinet(1);
             var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
 
-            var robot = new SuperRobot(cabinets, new HighestVacancyRateSelector(cabinets));
+            var robot = new AbstractRobot(cabinets, new HighestVacancyRateSelector(cabinets));
             robot.Store(new Bag());
 
             var message = robot.AvailableBoxesMessage();
