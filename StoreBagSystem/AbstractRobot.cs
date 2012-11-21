@@ -6,12 +6,12 @@ namespace StoreBagSystem
     public class AbstractRobot : IStoreable
     {
         private const string IndentString = "  ";
-        protected readonly IList<Cabinet> Cabinets;
+        private readonly IList<Cabinet> cabinets;
         private readonly ICabinetSelector selector;
 
         protected AbstractRobot(IList<Cabinet> cabinets, ICabinetSelector selector)
         {
-            Cabinets = cabinets;
+            this.cabinets = cabinets;
             this.selector = selector;
         }
 
@@ -23,22 +23,22 @@ namespace StoreBagSystem
 
         public Bag Pick(Ticket ticket)
         {
-            return Cabinets.Select(cabinet => cabinet.Pick(ticket)).FirstOrDefault(bag => bag != null);
+            return cabinets.Select(cabinet => cabinet.Pick(ticket)).FirstOrDefault(bag => bag != null);
         }
 
         public bool CanStore()
         {
-            return Cabinets.Any(cabinet => cabinet.CanStore());
+            return cabinets.Any(cabinet => cabinet.CanStore());
         }
 
         public string AvailableBoxesMessage()
         {
-            return Cabinets.Aggregate(Name(), (current, cabinet) => string.Concat(current, IndentString + cabinet.AvailableBoxesMessage()));
+            return cabinets.Aggregate(RobotName(), (current, cabinet) => string.Concat(current, IndentString + cabinet.AvailableBoxesMessage()));
         }
 
-        protected virtual  string Name()
+        private string RobotName()
         {
-            return string.Empty;
+            return selector.Name()+"Robot"+GetHashCode()+"\n";
         }
     }
 }

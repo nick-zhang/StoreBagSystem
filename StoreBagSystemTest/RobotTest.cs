@@ -89,7 +89,7 @@ namespace StoreBagSystemTest
             robot.Store(new Bag());
 
             var message = robot.AvailableBoxesMessage();
-            Assert.AreEqual(message, string.Format("Robot{0}\n  Cabinet{1}:{2}\n  Cabinet{3}:{4}\n",
+            Assert.AreEqual(message, string.Format("CommonRobot{0}\n  Cabinet{1}:{2}\n  Cabinet{3}:{4}\n",
                                                    robot.GetHashCode(),
                                                    cabinet1.GetHashCode(), cabinet1.AvailableBoxes(),
                                                    cabinet2.GetHashCode(), cabinet2.AvailableBoxes()

@@ -7,10 +7,5 @@ namespace StoreBagSystem
         public SmartRobot(IList<Cabinet> cabinets, ICabinetSelector selector) : base(cabinets ,selector)
         {
         }
-
-        protected override string Name()
-        {
-            return string.Format("SmartRobot{0}\n", GetHashCode());
-        }
     }
 }
