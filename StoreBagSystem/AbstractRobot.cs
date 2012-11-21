@@ -9,7 +9,7 @@ namespace StoreBagSystem
         private readonly IList<Cabinet> cabinets;
         private readonly ICabinetSelector selector;
 
-        protected AbstractRobot(IList<Cabinet> cabinets, ICabinetSelector selector)
+        public AbstractRobot(IList<Cabinet> cabinets, ICabinetSelector selector)
         {
             this.cabinets = cabinets;
             this.selector = selector;

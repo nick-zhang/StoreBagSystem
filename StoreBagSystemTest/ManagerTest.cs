@@ -27,7 +27,7 @@ namespace StoreBagSystemTest
         {
             var cabinet = new Cabinet(10);
             var cabinets1 = new List<Cabinet> {cabinet};
-            var robot = new Robot(cabinets1, new SequentialSelector(cabinets1));
+            var robot = new AbstractRobot(cabinets1, new SequentialSelector(cabinets1));
             var manager = new Manager(new List<IStoreable>{robot});
 
             var storedBag = new Bag();
@@ -42,7 +42,7 @@ namespace StoreBagSystemTest
         {
             var cabinet1 = new Cabinet(10);
             var cabinets1 = new List<Cabinet> {cabinet1};
-            var robot = new Robot(cabinets1, new SequentialSelector(cabinets1));
+            var robot = new AbstractRobot(cabinets1, new SequentialSelector(cabinets1));
 
             var cabinet2 = new Cabinet(5);
             var cabinets2 = new List<Cabinet> {cabinet2};
