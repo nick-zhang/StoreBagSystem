@@ -1,17 +1,11 @@
 using System.Collections.Generic;
-using System.Linq;
 
 namespace StoreBagSystem
 {
     public class Robot : AbstractRobot
     {
-        public Robot(IList<Cabinet> cabinets) : base(cabinets)
+        public Robot(IList<Cabinet> cabinets, ICabinetSelector selector) : base(cabinets, selector)
         {
-        }
-
-        protected override Cabinet GetAvailableCabinet()
-        {
-            return Cabinets.FirstOrDefault(cabinet => cabinet.AvailableBoxes() > 0) ?? Cabinets.First();
         }
 
         protected override string Name()

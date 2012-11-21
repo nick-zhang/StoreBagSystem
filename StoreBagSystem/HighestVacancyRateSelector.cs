@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace StoreBagSystem
 {
-    class HighestVacancyRateSelector : ICabinetSelector
+    public class HighestVacancyRateSelector : ICabinetSelector
     {
         private readonly IList<Cabinet> cabinets;
 

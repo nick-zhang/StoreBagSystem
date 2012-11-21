@@ -47,7 +47,7 @@
     <Compile Include="Bag.cs" />
     <Compile Include="Cabinet.cs" />
     <Compile Include="CabinetException.cs" />
-    <Compile Include="HighVacancyRateSelector.cs" />
+    <Compile Include="HighestVacancyRateSelector.cs" />
     <Compile Include="MostAvailableSelector.cs" />
     <Compile Include="ICabinetSelector.cs" />
     <Compile Include="IStoreable.cs" />

@@ -26,7 +26,8 @@ namespace StoreBagSystemTest
         public void ShouldStoreBagByAnyRobot()
         {
             var cabinet = new Cabinet(10);
-            var robot = new Robot(new List<Cabinet> {cabinet});
+            var cabinets1 = new List<Cabinet> {cabinet};
+            var robot = new Robot(cabinets1, new SequentialSelector(cabinets1));
             var manager = new Manager(new List<IStoreable>{robot});
 
             var storedBag = new Bag();
@@ -40,13 +41,16 @@ namespace StoreBagSystemTest
         public void ShouldManageMutipleRobots()
         {
             var cabinet1 = new Cabinet(10);
-            var robot = new Robot(new List<Cabinet> {cabinet1});
+            var cabinets1 = new List<Cabinet> {cabinet1};
+            var robot = new Robot(cabinets1, new SequentialSelector(cabinets1));
 
             var cabinet2 = new Cabinet(5);
-            var smartRobot = new SmartRobot(new List<Cabinet> {cabinet2});
+            var cabinets2 = new List<Cabinet> {cabinet2};
+            var smartRobot = new SmartRobot(cabinets2, new MostAvailableSelector(cabinets2));
 
             var cabinet3 = new Cabinet(4);
-            var superRobot = new SuperRobot(new List<Cabinet> {cabinet3});
+            var cabinets3 = new List<Cabinet> {cabinet3};
+            var superRobot = new SuperRobot(cabinets3, new HighestVacancyRateSelector(cabinets3));
 
             var manager = new Manager(new List<IStoreable> {robot, smartRobot, superRobot});
 

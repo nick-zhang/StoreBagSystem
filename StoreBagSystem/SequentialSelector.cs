@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace StoreBagSystem
 {
-    class SequentialSelector : ICabinetSelector
+    public class SequentialSelector : ICabinetSelector
     {
         private readonly IList<Cabinet> cabinets;
 
