@@ -13,7 +13,7 @@ namespace StoreBagSystemTest
         {
             var cabinet = new Cabinet(1);
             var cabinets = new List<Cabinet> {cabinet};
-            var robot = new AbstractRobot(cabinets, new SequentialSelector(cabinets));
+            var robot = new Robot(cabinets, new SequentialSelector(cabinets));
 
             var canStore = robot.CanStore();
             Assert.IsTrue(canStore);
@@ -27,7 +27,7 @@ namespace StoreBagSystemTest
             var cabinets = new List<Cabinet> {cabinet};
             cabinet.Store(new Bag());
 
-            var robot = new AbstractRobot(cabinets, new SequentialSelector(cabinets));
+            var robot = new Robot(cabinets, new SequentialSelector(cabinets));
 
             robot.Store(new Bag());
         }
@@ -39,7 +39,7 @@ namespace StoreBagSystemTest
             var cabinet2 = new Cabinet(1);
             var cabinets = new List<Cabinet> {cabinet1, cabinet2};
 
-            var robot = new AbstractRobot(cabinets, new SequentialSelector(cabinets));
+            var robot = new Robot(cabinets, new SequentialSelector(cabinets));
             var ticket = robot.Store(new Bag());
 
             Assert.IsNotNull(ticket);
@@ -54,7 +54,7 @@ namespace StoreBagSystemTest
             var cabinet2 = new Cabinet(1);
             var cabinets = new List<Cabinet> {cabinet1, cabinet2};
 
-            var robot = new AbstractRobot(cabinets, new SequentialSelector(cabinets));
+            var robot = new Robot(cabinets, new SequentialSelector(cabinets));
             var ticket = robot.Store(new Bag());
 
             Assert.IsNotNull(ticket);
@@ -69,7 +69,7 @@ namespace StoreBagSystemTest
             var cabinet2 = new Cabinet(1);
             var cabinets = new List<Cabinet> {cabinet1, cabinet2};
 
-            var robot = new AbstractRobot(cabinets, new SequentialSelector(cabinets));
+            var robot = new Robot(cabinets, new SequentialSelector(cabinets));
             var bag = new Bag();
             var ticket = robot.Store(bag);
 
@@ -85,15 +85,17 @@ namespace StoreBagSystemTest
             var cabinet2 = new Cabinet(1);
             var cabinets = new List<Cabinet> {cabinet1, cabinet2};
 
-            var robot = new AbstractRobot(cabinets, new SequentialSelector(cabinets));
+            var robot = new Robot(cabinets, new SequentialSelector(cabinets));
             robot.Store(new Bag());
 
-            var message = robot.AvailableBoxesMessage();
-            Assert.AreEqual(message, string.Format("CommonRobot{0}\n  Cabinet{1}:{2}\n  Cabinet{3}:{4}\n",
+            var message = robot.AvailableBoxesMessage("");
+            Assert.AreEqual(string.Format("CommonRobot{0}\n" +
+                                                   "  Cabinet{1}:{2}\n" +
+                                                   "  Cabinet{3}:{4}\n",
                                                    robot.GetHashCode(),
                                                    cabinet1.GetHashCode(), cabinet1.AvailableBoxes(),
                                                    cabinet2.GetHashCode(), cabinet2.AvailableBoxes()
-                                         ));
+                                         ), message);
         }
     }
 }

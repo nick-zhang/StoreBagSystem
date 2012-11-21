@@ -5,6 +5,7 @@ namespace StoreBagSystem
 {
     public class Manager : IStoreable
     {
+        private const string IndentString = "  ";
         private readonly IList<IStoreable> storeables;
 
         public Manager(IList<IStoreable> storeables)
@@ -29,6 +30,11 @@ namespace StoreBagSystem
         public bool CanStore()
         {
             return storeables.Any(s => s.CanStore());
+        }
+
+        public string AvailableBoxesMessage(string iString)
+        {
+            return storeables.Aggregate("Manager" + GetHashCode() + "\n", (current, storeable) => string.Concat(current, storeable.AvailableBoxesMessage(IndentString+iString)));
         }
     }
 }

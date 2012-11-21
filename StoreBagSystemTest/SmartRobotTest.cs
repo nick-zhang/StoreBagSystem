@@ -13,7 +13,7 @@ namespace StoreBagSystemTest
             var cabinet1 = new Cabinet(1);
             var cabinet2 = new Cabinet(2);
             var cabinets = new List<Cabinet> {cabinet1, cabinet2};
-            var smartRobot = new AbstractRobot(cabinets, new MostAvailableSelector(cabinets));
+            var smartRobot = new Robot(cabinets, new MostAvailableSelector(cabinets));
             smartRobot.Store(new Bag());
             Assert.AreEqual(1, cabinet1.AvailableBoxes());
             Assert.AreEqual(1, cabinet2.AvailableBoxes());
@@ -26,7 +26,7 @@ namespace StoreBagSystemTest
             var cabinet2 = new Cabinet(1);
             var cabinets = new List<Cabinet> {cabinet1, cabinet2};
 
-            var smartRobot = new AbstractRobot(cabinets, new MostAvailableSelector(cabinets));
+            var smartRobot = new Robot(cabinets, new MostAvailableSelector(cabinets));
             smartRobot.Store(new Bag());
             Assert.AreEqual(0, cabinet1.AvailableBoxes());
             Assert.AreEqual(1, cabinet2.AvailableBoxes());
@@ -39,7 +39,7 @@ namespace StoreBagSystemTest
             var cabinet1 = new Cabinet(0);
             var cabinet2 = new Cabinet(0);
             var cabinets = new List<Cabinet> {cabinet1, cabinet2};
-            var smartRobot = new AbstractRobot(cabinets, new MostAvailableSelector(cabinets));
+            var smartRobot = new Robot(cabinets, new MostAvailableSelector(cabinets));
             smartRobot.Store(new Bag());
         }
 
@@ -49,7 +49,7 @@ namespace StoreBagSystemTest
             var cabinet1 = new Cabinet(1);
             var cabinet2 = new Cabinet(2);
             var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
-            var smartRobot = new AbstractRobot(cabinets, new MostAvailableSelector(cabinets));
+            var smartRobot = new Robot(cabinets, new MostAvailableSelector(cabinets));
             var bag = new Bag();
             var ticket = smartRobot.Store(bag);
 
@@ -65,15 +65,15 @@ namespace StoreBagSystemTest
             var cabinet2 = new Cabinet(1);
             var cabinets = new List<Cabinet> { cabinet1, cabinet2 };
 
-            var robot = new AbstractRobot(cabinets, new MostAvailableSelector(cabinets));
+            var robot = new Robot(cabinets, new MostAvailableSelector(cabinets));
             robot.Store(new Bag());
 
-            var message = robot.AvailableBoxesMessage();
-            Assert.AreEqual(message, string.Format("SmartRobot{0}\n  Cabinet{1}:{2}\n  Cabinet{3}:{4}\n",
+            var message = robot.AvailableBoxesMessage("");
+            Assert.AreEqual(string.Format("SmartRobot{0}\n  Cabinet{1}:{2}\n  Cabinet{3}:{4}\n",
                                                    robot.GetHashCode(),
                                                    cabinet1.GetHashCode(), cabinet1.AvailableBoxes(),
                                                    cabinet2.GetHashCode(), cabinet2.AvailableBoxes()
-                                         ));
+                                         ), message);
         }
     }
 }

@@ -3,19 +3,19 @@ using System.Linq;
 
 namespace StoreBagSystem
 {
-    public class AbstractRobot : IStoreable
+    public sealed class Robot : IStoreable
     {
         private const string IndentString = "  ";
         private readonly IList<Cabinet> cabinets;
         private readonly ICabinetSelector selector;
 
-        public AbstractRobot(IList<Cabinet> cabinets, ICabinetSelector selector)
+        public Robot(IList<Cabinet> cabinets, ICabinetSelector selector)
         {
             this.cabinets = cabinets;
             this.selector = selector;
         }
 
-        public virtual Ticket Store(Bag bag)
+        public Ticket Store(Bag bag)
         {
             var availableBox = selector.GetAvailableCabinet();
             return availableBox.Store(bag);
@@ -31,14 +31,14 @@ namespace StoreBagSystem
             return cabinets.Any(cabinet => cabinet.CanStore());
         }
 
-        public string AvailableBoxesMessage()
+        public string AvailableBoxesMessage(string iString)
         {
-            return cabinets.Aggregate(RobotName(), (current, cabinet) => string.Concat(current, IndentString + cabinet.AvailableBoxesMessage()));
+            return cabinets.Aggregate(RobotName(iString), (current, cabinet) => string.Concat(current, cabinet.AvailableBoxesMessage(IndentString + iString)));
         }
 
-        private string RobotName()
+        private string RobotName(string iString)
         {
-            return selector.Name()+"Robot"+GetHashCode()+"\n";
+            return iString+selector.Name()+"Robot"+GetHashCode()+"\n";
         }
     }
 }

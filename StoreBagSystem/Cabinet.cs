@@ -53,9 +53,9 @@ namespace StoreBagSystem
             return !tickBagMap.ContainsKey(ticket);
         }
 
-        public string AvailableBoxesMessage()
+        public string AvailableBoxesMessage(string iString)
         {
-            return string.Format("Cabinet{0}:{1}\n", GetHashCode(), AvailableBoxes());
+            return string.Format(iString+"Cabinet{0}:{1}\n", GetHashCode(), AvailableBoxes());
         }
     }
 }
