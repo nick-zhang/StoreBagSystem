@@ -47,11 +47,15 @@
     <Compile Include="Bag.cs" />
     <Compile Include="Cabinet.cs" />
     <Compile Include="CabinetException.cs" />
+    <Compile Include="HighVacancyRateSelector.cs" />
+    <Compile Include="MostAvailableSelector.cs" />
+    <Compile Include="ICabinetSelector.cs" />
     <Compile Include="IStoreable.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Robot.cs" />
+    <Compile Include="SequentialSelector.cs" />
     <Compile Include="SmartRobot.cs" />
     <Compile Include="SuperRobot.cs" />
     <Compile Include="Ticket.cs" />
