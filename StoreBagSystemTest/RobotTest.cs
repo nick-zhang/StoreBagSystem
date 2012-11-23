@@ -87,9 +87,9 @@ namespace StoreBagSystemTest
 
             var robot = new Robot(cabinets, new SequentialSelector(cabinets));
             robot.Store(new Bag());
+            var message = robot.FormattedMessage(new MessageFormatter());
 
-            var message = robot.AvailableBoxesMessage("");
-            Assert.AreEqual(string.Format("CommonRobot{0}\n" +
+            Assert.AreEqual(string.Format("Robot{0}\n" +
                                                    "  Cabinet{1}:{2}\n" +
                                                    "  Cabinet{3}:{4}\n",
                                                    robot.GetHashCode(),

@@ -88,7 +88,7 @@ namespace StoreBagSystemTest
             var message = manager.AvailableBoxesMessage("");
 
             Assert.AreEqual(string.Format("Manager{0}\n" +
-                                                   "  CommonRobot{1}\n" +
+                                                   "  Robot{1}\n" +
                                                    "    Cabinet{2}:{3}\n",
                                                    manager.GetHashCode(),
                                                    robot.GetHashCode(),

@@ -76,8 +76,8 @@ namespace StoreBagSystemTest
             var cabinet = new Cabinet(2);
             var bag = new Bag();
             cabinet.Store(bag);
+            var message = cabinet.FormattedMessage(new MessageFormatter());
 
-            var  message = cabinet.AvailableBoxesMessage("");
             Assert.AreEqual(message, string.Format("Cabinet{0}:{1}\n", cabinet.GetHashCode(), cabinet.AvailableBoxes()));
             Console.Out.WriteLine(message);
         }

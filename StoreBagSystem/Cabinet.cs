@@ -53,6 +53,11 @@ namespace StoreBagSystem
             return !tickBagMap.ContainsKey(ticket);
         }
         
+        public string FormattedMessage(MessageFormatter formatter)
+        {
+            return formatter.FormatCabinet(this);
+        }
+
         public string AvailableBoxesMessage(string intend)
         {
             return string.Format("{0}Cabinet{1}:{2}\n", intend, GetHashCode(), AvailableBoxes());

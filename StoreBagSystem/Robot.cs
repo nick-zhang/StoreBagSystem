@@ -15,6 +15,11 @@ namespace StoreBagSystem
             this.selector = selector;
         }
 
+        public IEnumerable<Cabinet> Cabinets
+        {
+            get { return cabinets; }
+        }
+
         public Ticket Store(Bag bag)
         {
             var availableBox = selector.GetAvailableCabinet();
@@ -23,22 +28,27 @@ namespace StoreBagSystem
 
         public Bag Pick(Ticket ticket)
         {
-            return cabinets.Select(cabinet => cabinet.Pick(ticket)).FirstOrDefault(bag => bag != null);
+            return Cabinets.Select(cabinet => cabinet.Pick(ticket)).FirstOrDefault(bag => bag != null);
         }
 
         public bool CanStore()
         {
-            return cabinets.Any(cabinet => cabinet.CanStore());
+            return Cabinets.Any(cabinet => cabinet.CanStore());
         }
 
         public string AvailableBoxesMessage(string intend)
         {
-            return cabinets.Aggregate(Name(intend), (current, cabinet) => string.Concat(current, cabinet.AvailableBoxesMessage(IndentString + intend)));
+            return Cabinets.Aggregate(Name(intend), (current, cabinet) => string.Concat(current, cabinet.AvailableBoxesMessage(IndentString + intend)));
+        }
+
+        public string FormattedMessage(MessageFormatter formatter)
+        {
+            return formatter.FormatRobot(this);
         }
 
         private string Name(string intend)
         {
-            return string.Format("{0}{1}Robot{2}\n", intend, selector.Name(), GetHashCode());
+            return string.Format("{0}Robot{1}\n", intend, GetHashCode());
         }
     }
 }
