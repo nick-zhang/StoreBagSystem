@@ -31,14 +31,14 @@ namespace StoreBagSystem
             return cabinets.Any(cabinet => cabinet.CanStore());
         }
 
-        public string AvailableBoxesMessage(string iString)
+        public string AvailableBoxesMessage(string intend)
         {
-            return cabinets.Aggregate(RobotName(iString), (current, cabinet) => string.Concat(current, cabinet.AvailableBoxesMessage(IndentString + iString)));
+            return cabinets.Aggregate(Name(intend), (current, cabinet) => string.Concat(current, cabinet.AvailableBoxesMessage(IndentString + intend)));
         }
 
-        private string RobotName(string iString)
+        private string Name(string intend)
         {
-            return iString+selector.Name()+"Robot"+GetHashCode()+"\n";
+            return string.Format("{0}{1}Robot{2}\n", intend, selector.Name(), GetHashCode());
         }
     }
 }

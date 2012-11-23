@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace StoreBagSystem
 {
-    public class Cabinet :IStoreable
+    public class Cabinet : IStoreable
     {
         private readonly int capacity;
         private readonly Dictionary<Ticket, Bag> tickBagMap;
@@ -20,7 +20,7 @@ namespace StoreBagSystem
 
             var ticket = new Ticket();
             tickBagMap.Add(ticket, bag);
-            return  ticket;
+            return ticket;
         }
 
         public Bag Pick(Ticket ticket)
@@ -40,7 +40,7 @@ namespace StoreBagSystem
 
         public double VacancyRate()
         {
-            return (double)(AvailableBoxes()) / capacity;
+            return (double) (AvailableBoxes())/capacity;
         }
 
         public bool CanStore()
@@ -52,10 +52,10 @@ namespace StoreBagSystem
         {
             return !tickBagMap.ContainsKey(ticket);
         }
-
-        public string AvailableBoxesMessage(string iString)
+        
+        public string AvailableBoxesMessage(string intend)
         {
-            return string.Format(iString+"Cabinet{0}:{1}\n", GetHashCode(), AvailableBoxes());
+            return string.Format("{0}Cabinet{1}:{2}\n", intend, GetHashCode(), AvailableBoxes());
         }
     }
 }

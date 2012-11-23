@@ -32,9 +32,14 @@ namespace StoreBagSystem
             return storeables.Any(s => s.CanStore());
         }
 
-        public string AvailableBoxesMessage(string iString)
+        public string AvailableBoxesMessage(string intend)
         {
-            return storeables.Aggregate("Manager" + GetHashCode() + "\n", (current, storeable) => string.Concat(current, storeable.AvailableBoxesMessage(IndentString+iString)));
+            return storeables.Aggregate(Name(intend), (current, storeable) => string.Concat(current, storeable.AvailableBoxesMessage(IndentString+intend)));
+        }
+
+        private string Name(string intend)
+        {
+            return string.Format("{0}Manager{1}\n", intend, GetHashCode());
         }
     }
 }
