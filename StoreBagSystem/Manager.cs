@@ -13,9 +13,14 @@ namespace StoreBagSystem
             this.storeables = storeables;
         }
 
+        public IEnumerable<IStoreable> Storeables
+        {
+            get { return storeables; }
+        }
+
         public Ticket Store(Bag bag)
         {
-            var firstCanStore = storeables.FirstOrDefault(s => s.CanStore());
+            var firstCanStore = Storeables.FirstOrDefault(s => s.CanStore());
             if (firstCanStore ==null)
                 throw  new CabinetException("No Box Available.");
                 
@@ -24,17 +29,22 @@ namespace StoreBagSystem
 
         public Bag Pick(Ticket ticket)
         {
-            return storeables.Select(s => s.Pick(ticket)).FirstOrDefault(b => b != null);
+            return Storeables.Select(s => s.Pick(ticket)).FirstOrDefault(b => b != null);
         }
 
         public bool CanStore()
         {
-            return storeables.Any(s => s.CanStore());
+            return Storeables.Any(s => s.CanStore());
+        }
+
+        public string FormattedMessage(MessageFormatter formatter)
+        {
+            return formatter.FormatManager(this);
         }
 
         public string AvailableBoxesMessage(string intend)
         {
-            return storeables.Aggregate(Name(intend), (current, storeable) => string.Concat(current, storeable.AvailableBoxesMessage(IndentString+intend)));
+            return Storeables.Aggregate(Name(intend), (current, storeable) => string.Concat(current, storeable.AvailableBoxesMessage(IndentString+intend)));
         }
 
         private string Name(string intend)

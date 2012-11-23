@@ -6,5 +6,6 @@ namespace StoreBagSystem
         Bag Pick(Ticket ticket);
         bool CanStore();
         string AvailableBoxesMessage(string intend);
+        string FormattedMessage(MessageFormatter formatter);
     }
 }
