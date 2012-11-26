@@ -16,10 +16,5 @@ namespace StoreBagSystem
         {
             return cabinets.FirstOrDefault(cabinet => cabinet.AvailableBoxes() > 0) ?? cabinets.First();
         }
-
-        public string Name()
-        {
-            return "Common";
-        }
     }
 }

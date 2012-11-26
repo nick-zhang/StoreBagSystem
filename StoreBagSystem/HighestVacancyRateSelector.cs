@@ -16,10 +16,5 @@ namespace StoreBagSystem
         {
             return cabinets.OrderByDescending(cabinet => cabinet.VacancyRate()).First();
         }
-
-        public string Name()
-        {
-            return "Super";
-        }
     }
 }
