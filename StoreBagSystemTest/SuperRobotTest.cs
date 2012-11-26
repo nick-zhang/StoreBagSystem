@@ -50,8 +50,8 @@ namespace StoreBagSystemTest
 
             var robot = new Robot(cabinets, new HighestVacancyRateSelector(cabinets));
             robot.Store(new Bag());
-
-            var message = robot.AvailableBoxesMessage("");
+            var message = robot.FormattedMessage(new MessageFormatter(""));
+            
             Assert.AreEqual(message, string.Format("Robot{0}\n  Cabinet{1}:{2}\n  Cabinet{3}:{4}\n",
                                                    robot.GetHashCode(),
                                                    cabinet1.GetHashCode(), cabinet1.AvailableBoxes(),

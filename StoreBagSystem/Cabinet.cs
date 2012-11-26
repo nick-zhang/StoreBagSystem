@@ -57,10 +57,5 @@ namespace StoreBagSystem
         {
             return formatter.FormatCabinet(this);
         }
-
-        public string AvailableBoxesMessage(string intend)
-        {
-            return string.Format("{0}Cabinet{1}:{2}\n", intend, GetHashCode(), AvailableBoxes());
-        }
     }
 }

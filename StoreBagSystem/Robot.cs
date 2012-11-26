@@ -5,7 +5,6 @@ namespace StoreBagSystem
 {
     public sealed class Robot : IStoreable
     {
-        private const string IndentString = "  ";
         private readonly IList<Cabinet> cabinets;
         private readonly ICabinetSelector selector;
 
@@ -36,19 +35,9 @@ namespace StoreBagSystem
             return Cabinets.Any(cabinet => cabinet.CanStore());
         }
 
-        public string AvailableBoxesMessage(string intend)
-        {
-            return Cabinets.Aggregate(Name(intend), (current, cabinet) => string.Concat(current, cabinet.AvailableBoxesMessage(IndentString + intend)));
-        }
-
         public string FormattedMessage(MessageFormatter formatter)
         {
             return formatter.FormatRobot(this);
-        }
-
-        private string Name(string intend)
-        {
-            return string.Format("{0}Robot{1}\n", intend, GetHashCode());
         }
     }
 }

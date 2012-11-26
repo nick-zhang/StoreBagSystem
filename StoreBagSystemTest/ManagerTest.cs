@@ -82,10 +82,10 @@ namespace StoreBagSystemTest
             var cabinet1 = new Cabinet(10);
             var cabinets1 = new List<Cabinet> {cabinet1};
             var robot = new Robot(cabinets1, new SequentialSelector(cabinets1));
-
             var manager = new Manager(new List<IStoreable> {robot});
             manager.Store(new Bag());
-            var message = manager.AvailableBoxesMessage("");
+
+            var message = manager.FormattedMessage(new MessageFormatter(""));
 
             Assert.AreEqual(string.Format("Manager{0}\n" +
                                                    "  Robot{1}\n" +

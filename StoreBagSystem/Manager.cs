@@ -41,15 +41,5 @@ namespace StoreBagSystem
         {
             return formatter.FormatManager(this);
         }
-
-        public string AvailableBoxesMessage(string intend)
-        {
-            return Storeables.Aggregate(Name(intend), (current, storeable) => string.Concat(current, storeable.AvailableBoxesMessage(IndentString+intend)));
-        }
-
-        private string Name(string intend)
-        {
-            return string.Format("{0}Manager{1}\n", intend, GetHashCode());
-        }
     }
 }
