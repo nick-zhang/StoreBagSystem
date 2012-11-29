@@ -75,11 +75,5 @@ namespace StoreBagSystemTest
                                                    cabinet2.GetHashCode(), cabinet2.AvailableBoxes()
                                          ), message);
         }
-
-        [TestMethod]
-        public void ShouldNAME()
-        {
-
-        }
     }
 }
