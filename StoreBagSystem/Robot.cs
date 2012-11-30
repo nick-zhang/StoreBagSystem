@@ -21,8 +21,8 @@ namespace StoreBagSystem
 
         public Ticket Store(Bag bag)
         {
-            var availableBox = selector.GetAvailableCabinet();
-            return availableBox.Store(bag);
+            var cabinet = selector.SelectCabinet();
+            return cabinet.Store(bag);
         }
 
         public Bag Pick(Ticket ticket)

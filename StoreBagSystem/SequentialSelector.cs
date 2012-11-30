@@ -12,7 +12,7 @@ namespace StoreBagSystem
             this.cabinets = cabinets;
         }
 
-        public Cabinet GetAvailableCabinet()
+        public Cabinet SelectCabinet()
         {
             return cabinets.FirstOrDefault(cabinet => cabinet.AvailableBoxes() > 0) ?? cabinets.First();
         }

@@ -12,7 +12,7 @@ namespace StoreBagSystem
             this.cabinets = cabinets;
         }
 
-        public Cabinet GetAvailableCabinet()
+        public Cabinet SelectCabinet()
         {
             return cabinets.OrderByDescending(cabinet => cabinet.VacancyRate()).First();
         }

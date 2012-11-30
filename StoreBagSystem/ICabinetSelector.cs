@@ -2,6 +2,6 @@ namespace StoreBagSystem
 {
     public interface ICabinetSelector
     {
-        Cabinet GetAvailableCabinet();
+        Cabinet SelectCabinet();
     }
 }
