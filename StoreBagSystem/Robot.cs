@@ -19,9 +19,9 @@ namespace StoreBagSystem
             get { return cabinets; }
         }
 
-        public string Name
+        public string GetName()
         {
-            get { return selector.Name; }
+            return selector.GetName();
         }
 
         public Ticket Store(Bag bag)

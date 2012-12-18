@@ -19,7 +19,7 @@ namespace StoreBagSystem
         
         public string FormatRobot(Robot robot)
         {
-            return robot.Cabinets.Aggregate(string.Format("{0}{1}Robot{2}\n", intend, robot.Name,robot.GetHashCode()), 
+            return robot.Cabinets.Aggregate(string.Format("{0}{1}Robot{2}\n", intend, robot.GetName(),robot.GetHashCode()), 
                 (current, cabinet) => string.Concat(current, intend + cabinet.FormattedMessage(new MessageFormatter(IntendString))));
         }
         
