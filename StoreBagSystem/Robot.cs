@@ -19,6 +19,11 @@ namespace StoreBagSystem
             get { return cabinets; }
         }
 
+        public string Name
+        {
+            get { return selector.Name; }
+        }
+
         public Ticket Store(Bag bag)
         {
             var cabinet = selector.SelectCabinet();

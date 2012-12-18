@@ -16,5 +16,10 @@ namespace StoreBagSystem
         {
             return cabinets.OrderByDescending(cabinet => cabinet.AvailableBoxes()).First();
         }
+
+        public string Name
+        {
+            get { return "Smart"; }
+        }
     }
 }
