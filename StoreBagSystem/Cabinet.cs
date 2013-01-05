@@ -53,7 +53,7 @@ namespace StoreBagSystem
             return !tickBagMap.ContainsKey(ticket);
         }
         
-        public string FormattedMessage(MessageFormatter formatter)
+        public string ReportEmptyBox(MessageFormatter formatter)
         {
             return formatter.FormatCabinet(this);
         }
