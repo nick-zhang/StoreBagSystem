@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MessageFormatter.cs" />
+    <Compile Include="EmptyBoxReporter.cs" />
     <Compile Include="Robot.cs" />
     <Compile Include="Bag.cs" />
     <Compile Include="Cabinet.cs" />

@@ -86,7 +86,7 @@ namespace StoreBagSystemTest
             var manager = new Manager(new List<IStoreable> {robot, cabinet2});
             manager.Store(new Bag());
 
-            var message = manager.ReportEmptyBox(new MessageFormatter());
+            var message = manager.ReportEmptyBox(new EmptyBoxReporter());
 
             Assert.AreEqual(string.Format("Manager{0}\n" +
                                                    "  Robot{1}\n" +

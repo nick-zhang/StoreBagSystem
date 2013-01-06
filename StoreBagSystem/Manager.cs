@@ -36,9 +36,9 @@ namespace StoreBagSystem
             return Storeables.Any(s => s.CanStore());
         }
 
-        public string ReportEmptyBox(MessageFormatter formatter)
+        public string ReportEmptyBox(EmptyBoxReporter formatter)
         {
-            return formatter.Format(this);
+            return formatter.Report(this);
         }
     }
 }

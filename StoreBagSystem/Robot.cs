@@ -40,9 +40,9 @@ namespace StoreBagSystem
             return Cabinets.Any(cabinet => cabinet.CanStore());
         }
 
-        public string ReportEmptyBox(MessageFormatter formatter)
+        public string ReportEmptyBox(EmptyBoxReporter formatter)
         {
-            return formatter.Format(this);
+            return formatter.Report(this);
         }
     }
 }

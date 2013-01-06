@@ -2,17 +2,17 @@
 
 namespace StoreBagSystem
 {
-    public class MessageFormatter
+    public class EmptyBoxReporter
     {
         private const string INTEND_STRING = "  ";
         private string intend = string.Empty;
 
-        public string Format(Cabinet cabinet)
+        public string Report(Cabinet cabinet)
         {
             return string.Format("{0}Cabinet{1}:{2}\n", intend, cabinet.GetHashCode(), cabinet.AvailableBoxes());
         }
         
-        public string Format(Robot robot)
+        public string Report(Robot robot)
         {
             var reportEmptyBox = string.Format("{0}{1}Robot{2}\n", intend, robot.GetName(), robot.GetHashCode());
             AddIntend();
@@ -21,7 +21,7 @@ namespace StoreBagSystem
             return reportEmptyBox;
         }
         
-        public string Format(Manager manager)
+        public string Report(Manager manager)
         {
             var reportEmptyBox = string.Format("{0}Manager{1}\n", intend, manager.GetHashCode());
             AddIntend();

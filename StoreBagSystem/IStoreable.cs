@@ -5,6 +5,6 @@ namespace StoreBagSystem
         Ticket Store(Bag bag);
         Bag Pick(Ticket ticket);
         bool CanStore();
-        string ReportEmptyBox(MessageFormatter formatter);
+        string ReportEmptyBox(EmptyBoxReporter formatter);
     }
 }
