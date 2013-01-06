@@ -5,7 +5,6 @@ namespace StoreBagSystem
 {
     public class Manager : IStoreable
     {
-        private const string IndentString = "  ";
         private readonly IList<IStoreable> storeables;
 
         public Manager(IList<IStoreable> storeables)
@@ -39,7 +38,7 @@ namespace StoreBagSystem
 
         public string ReportEmptyBox(MessageFormatter formatter)
         {
-            return formatter.FormatManager(this);
+            return formatter.Format(this);
         }
     }
 }

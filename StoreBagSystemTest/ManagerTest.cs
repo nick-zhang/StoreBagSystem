@@ -82,17 +82,21 @@ namespace StoreBagSystemTest
             var cabinet1 = new Cabinet(10);
             var cabinets1 = new List<Cabinet> {cabinet1};
             var robot = new Robot(cabinets1, new SequentialSelector(cabinets1));
-            var manager = new Manager(new List<IStoreable> {robot});
+            var cabinet2 = new Cabinet(2);
+            var manager = new Manager(new List<IStoreable> {robot, cabinet2});
             manager.Store(new Bag());
 
-            var message = manager.ReportEmptyBox(new MessageFormatter(""));
+            var message = manager.ReportEmptyBox(new MessageFormatter());
 
             Assert.AreEqual(string.Format("Manager{0}\n" +
                                                    "  Robot{1}\n" +
-                                                   "    Cabinet{2}:{3}\n",
+                                                   "    Cabinet{2}:{3}\n"+
+                                                   "  Cabinet{4}:{5}\n",
                                                    manager.GetHashCode(),
                                                    robot.GetHashCode(),
-                                                   cabinet1.GetHashCode(), cabinet1.AvailableBoxes()
+                                                   cabinet1.GetHashCode(), cabinet1.AvailableBoxes(),
+                                                   cabinet2.GetHashCode(), cabinet2.AvailableBoxes()
+
                                          ), message);
         }
     }

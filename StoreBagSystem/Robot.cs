@@ -42,7 +42,7 @@ namespace StoreBagSystem
 
         public string ReportEmptyBox(MessageFormatter formatter)
         {
-            return formatter.FormatRobot(this);
+            return formatter.Format(this);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace StoreBagSystem
         
         public string ReportEmptyBox(MessageFormatter formatter)
         {
-            return formatter.FormatCabinet(this);
+            return formatter.Format(this);
         }
     }
 }

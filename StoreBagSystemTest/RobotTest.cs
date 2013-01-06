@@ -87,7 +87,7 @@ namespace StoreBagSystemTest
 
             var robot = new Robot(cabinets, new SequentialSelector(cabinets));
             robot.Store(new Bag());
-            var message = robot.ReportEmptyBox(new MessageFormatter(""));
+            var message = robot.ReportEmptyBox(new MessageFormatter());
 
             Assert.AreEqual(string.Format("Robot{0}\n" +
                                                    "  Cabinet{1}:{2}\n" +
